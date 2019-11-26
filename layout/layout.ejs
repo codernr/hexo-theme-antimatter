@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Antimatter Hexo theme</title>
+        <meta charset="utf-8" />
+        <title><%= page.title %></title>
+        <%- partial('_partial/metadata.ejs') %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <% if (theme.favicon){ %>
+            <link rel="icon" href="<%- theme.favicon %>">
+        <% } %>
     </head>
     <body><%- body %></body>
 </html>
