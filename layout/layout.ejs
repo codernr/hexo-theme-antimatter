@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title><%= page.title %></title>
-        <%- partial('_partial/metadata.ejs') %>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <% if (theme.favicon){ %>
-            <link rel="icon" href="<%- theme.favicon %>">
-        <% } %>
-        <link rel="canonical" href="<%- page.url %>">
 
-        <%- css([
+<head>
+    <meta charset="utf-8" />
+    <title><%= page.title %></title>
+    <%- partial('_partial/metadata.ejs') %>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <% if (theme.favicon){ %>
+    <link rel="icon" href="<%- theme.favicon %>">
+    <% } %>
+    <link rel="canonical" href="<%- page.url %>">
+
+    <%- css([
             'css/pure-0.5.0/grids-min',
             'css/nucleus',
             'css/template',
             'css/font-awesome.min',
             'css/slidebars.min'
         ]) %>
-        <%- js([
+    <%- js([
             'https://code.jquery.com/jquery-3.4.1.min.js',
             'js/modernizr.custom.71422',
             'js/antimatter',
             'js/slidebars.min'
         ]) %>
-    </head>
-    <body id="top">
-        <div id="sb-site">
-            <header id="header">
-                <div id="logo">
-                    <h3><a href="<%= config.url %>"><%= config.title %></a></h3>
-                </div>
-                <div id="navbar">
-                    <%- partial('_partial/navigation.ejs') %>
-                    <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
-                </div>
-            </header>
+</head>
+
+<body id="top">
+    <div id="sb-site">
+        <header id="header">
+            <div id="logo">
+                <h3><a href="<%= config.url %>"><%= config.title %></a></h3>
+            </div>
+            <div id="navbar">
+                <%- partial('_partial/navigation.ejs') %>
+                <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
+            </div>
+        </header>
+        <section id="body">
+            <%- body %>
+        </section>
+        <footer id="footer">
+            <div class="totop">
+                <span><a href="#" id="toTop"><i class="fa fa-arrow-up"></i></a></span>
+            </div>
+        </footer>
+    </div>
+    <div class="sb-slidebar sb-left sb-width-thin">
+        <div id="panel">
+            <%- partial('_partial/navigation.ejs') %>
         </div>
-        <%- body %>
-    </body>
+    </div>
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                $.slidebars({
+                    hideControlClasses: true,
+                    scrollLock: true
+                });
+            });
+        });
+    </script>
+</body>
+
 </html>
