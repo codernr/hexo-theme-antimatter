@@ -24,5 +24,18 @@
             'js/slidebars.min'
         ]) %>
     </head>
-    <body><%- body %></body>
+    <body id="top">
+        <div id="sb-site">
+            <header id="header">
+                <div id="logo">
+                    <h3><a href="<%= config.url %>"><%= config.title %></a></h3>
+                </div>
+                <div id="navbar">
+                    <%- partial('_partial/navigation.ejs') %>
+                    <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
+                </div>
+            </header>
+        </div>
+        <%- body %>
+    </body>
 </html>
